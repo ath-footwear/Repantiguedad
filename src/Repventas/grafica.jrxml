@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="28d1c5ee-ece0-405f-bd94-e5e9452d9cd1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select sum(a1)+sum(a2)+sum(a3)+sum(a4)+sum(a5)+sum(a6) as saldos, sum(importe) as importes
+from antiguedad_notas]]>
+	</queryString>
+	<field name="saldos" class="java.lang.Object"/>
+	<field name="importes" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="752" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="23" y="57" width="520" height="439" uuid="9ae2b8ec-f973-4abc-a41b-00405c1d2f88"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<pieSeries>
+						<keyExpression><![CDATA["saldos"]]></keyExpression>
+						<valueExpression><![CDATA[$F{saldos}]]></valueExpression>
+						<labelExpression><![CDATA[$F{saldos}.toString()]]></labelExpression>
+					</pieSeries>
+					<pieSeries>
+						<keyExpression><![CDATA["importes"]]></keyExpression>
+						<valueExpression><![CDATA[$F{importes}]]></valueExpression>
+						<labelExpression><![CDATA[$F{importes}.toString()]]></labelExpression>
+					</pieSeries>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</detail>
+</jasperReport>
